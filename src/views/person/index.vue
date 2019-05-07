@@ -1,12 +1,19 @@
 <template>
     <div>
-        hello person
+       <Header title="个人中心"/>
+       <Footer />
     </div>
 </template>
 
 <script>
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 export default {
-
+    name:'person',
+    components:{
+        Header,
+        Footer
+    }
 }
 </script>
 
