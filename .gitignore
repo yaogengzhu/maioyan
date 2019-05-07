@@ -1,4 +1,5 @@
 .DS_Store
+# 去掉包的依赖
 node_modules
 /dist
 
