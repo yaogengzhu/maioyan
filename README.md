@@ -74,7 +74,7 @@ export default new Router({
 })
 ```
 - 主路由文件的分析，似乎看起来并没有什么大的优化。那么看看子路由是怎么做的
-```
+```js
 export default {
     path:'/movie',
     component:() => import('@/views/movie')
