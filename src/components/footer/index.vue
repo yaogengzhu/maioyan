@@ -5,11 +5,11 @@
         <img src="@/assets/movie.png" alt>
         <p>喵眼电影</p>
       </router-link>
-      <router-link tag="li" to="city">
+      <router-link tag="li" to="/city">
           <img src="@/assets/message.png" alt>
           <p>喵眼城市</p>
       </router-link>
-      <router-link tag="li" to="person">
+      <router-link tag="li" to="/person">
         <img src="@/assets/personal.png" alt>
         <p>个人中心</p>
       </router-link>

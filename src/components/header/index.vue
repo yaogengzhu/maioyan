@@ -18,11 +18,11 @@ export default {
 
 <style lang="scss" scoped>
     #header{
-        height: 60px;
+        height: 40px;
         width: 100%;
         background-color: rgb(236, 96, 96);
         text-align: center;
-        line-height: 60px;
+        line-height: 40px;
         font-size: 18px;
         color: #fff;
         h1{
