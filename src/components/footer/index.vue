@@ -28,7 +28,8 @@ export default {};
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: pink;
+  border-top: 1px solid #ddd;
+  // background-color: pink;
   ul {
     width: 100%;
   }
