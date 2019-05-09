@@ -39,5 +39,45 @@
         └── person
 ```
 
-## 初始化整个项目 
-- 使用`vue-cli`初始化整个项目 `vue create miaoyan` ,没有使用默认配置，是手动配置的。配置的`vue-router`,`vuex`,`node-sass`,`eslint`..
+## 如何初始化整个项目 
+- 使用`vue-cli`初始化整个项目
+- 使用命令 `vue create miaoyan` 
+- 没有使用默认配置，是手动配置的。配置的`vue-router`,`vuex`,`node-sass`,`eslint`..
+
+## 项目结构分析
+本次项目方式全部将采用子组件方式去创建，可以根据目录看到
+- `views`文件作为视图层，作为三个大的单页面去实现
+- `components` 文件存放自子组件，这些子组件的功能是一次书写，可以多次调用。比如`header`作为头部分的页面，不仅是在单个页面拥有，而且是在其他三个大的单页面同时拥有，这时候就被抽离出来，以便与随时调用。
+- `routers` 对于路由组件来说，本来就存在一个`index.js`就已经足够使用，但是为了后续大的项目，本次页将抽离出来。每个页面的路由都抽离作为一个文件存放，以方便管理。
+- 可以看看对路由作出来哪些优化
+```js 
+import Vue from 'vue'
+import Router from 'vue-router'
+// 为了方便管理，路由也按需加载
+import movieRouter from '../routers/movie'
+import cityRouter from '../routers/city'
+import personRouter from '../routers/person'
+Vue.use(Router)
+
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path:'/',
+      redirect:'/movie'
+    },
+   movieRouter,
+   cityRouter,
+   personRouter
+  ]
+})
+```
+- 主路由文件的分析，似乎看起来并没有什么大的优化。那么看看子路由是怎么做的
+```
+export default {
+    path:'/movie',
+    component:() => import('@/views/movie')
+}
+```
+- 对于子路由的优化，我们做到来按需加载的形式。如果我们使用以前的方式。这个页面不需要组件的文件也会被加载进来，但是使用`() => import('组件的地址')`。优化之后，对页面也会有一定的提升。
