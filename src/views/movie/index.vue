@@ -45,7 +45,7 @@ export default {
       width: 25%;
       height: 40px;
       line-height: 40px;
-      font-size: 16px;
+      font-size: 15px;
       color: #444;
       font-weight: 500;
       text-align: center;
