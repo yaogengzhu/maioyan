@@ -1,5 +1,6 @@
 export default {
     path:'/movie',
+    redirect:'/movie/nowPlaying',
     component:() => import('@/views/movie'),
     children:[
         {

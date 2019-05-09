@@ -4,14 +4,14 @@
     <!-- 导航部分 -->
     <div class="nav">
       <ul class="nav-list">
-        <router-link tag="li" to="/movie/cityList" >
+        <router-link tag="li" to="/movie/cityList">
           宜昌
           <span class="iconfont">&#xe65a;</span>
         </router-link>
         <router-link tag="li" to="/movie/NowPlaying">正在热映</router-link>
         <router-link tag="li" to="/movie/willPlaying">即将上映</router-link>
         <router-link tag="li" to="/movie/search">
-        <span class="iconfont search">&#xe751;</span>
+          <span class="iconfont search">&#xe751;</span>
         </router-link>
       </ul>
     </div>
@@ -37,8 +37,15 @@ export default {
 <style lang="scss" scoped>
 #movie {
   .nav {
+    margin-top: 40px;
     .nav-list {
+      position: fixed;
+      top: 40;
+      left: 0;
+      z-index: 999;
+      background-color: #fff;
       width: 100%;
+      overflow: hidden;
     }
     li {
       float: left;

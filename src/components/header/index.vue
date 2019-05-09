@@ -18,9 +18,13 @@ export default {
 
 <style lang="scss" scoped>
     #header{
+        position: fixed;
+        top: 0;
+        left:0;
         height: 40px;
         width: 100%;
-        background-color: rgb(236, 96, 96);
+        background-color: deeppink;
+        z-index: 999;
         text-align: center;
         line-height: 40px;
         font-size: 18px;

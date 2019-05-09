@@ -1,25 +1,167 @@
 <template>
   <div id="nowPlaying">
-    <div class="box">
-      <div class="img">
-        <img src="@/assets/movie.jpg" alt>
-      </div>
-      <div class="info">
-        <h2>
-          复仇者联盟：终极之战
-          <img src="../../assets/max.png" alt>
-        </h2>
-        <p>
-          观众影评：
-          <span>9.0</span>
-        </p>
-        <p>主演：</p>
-        <p>今日放映</p>
-      </div>
-      <div class="buy">
-        <button>购买</button>
-      </div>
-    </div>
+    <ul>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+      <li class="box">
+        <div class="img">
+          <img src="../../assets/movie.jpg" alt>
+        </div>
+        <div class="info">
+          <h2>
+            复仇者联盟：终极之战
+            <img src="../../assets/max.png" alt>
+          </h2>
+          <p>
+            影评：
+            <span>9.0</span>
+          </p>
+          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
+          <p>今天25家影院放映252场</p>
+        </div>
+        <div class="buy">
+          <button>购买</button>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -29,64 +171,63 @@ export default {};
 
 <style lang="scss" scoped>
 #nowPlaying {
-  .box {
-    width: 100%;
-    overflow: hidden;
-    padding: 0 10px;
-    margin-top: 10px;
+  padding: 0 10px;
+  ul {
+    margin-top: 40px;
   }
-  div {
-    float: left;
+  .box {
+    display: flex;
     height: 100px;
+    margin: 15px 0;
   }
   .img {
     width: 64px;
-    height: 90px;
     img {
       width: 100%;
     }
   }
   .info {
+    flex: 1;
+    margin-left: 10px;
     position: relative;
-    padding: 0 0 0 10px;
     h2 {
-      margin: 4px 0 15px 0;
       width: 150px;
+      margin-bottom: 15px;
       font-weight: 500;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
       img {
         position: absolute;
-        width: 50px;
         top: 0;
         right: 10px;
+        width: 50px;
       }
     }
     p {
-      margin: 7px 0;
-      font-size: 12px;
       width: 200px;
-    }
-    p span {
-      color: rgb(96, 243, 128);
+      margin: 10px 0;
+      font-size: 12px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      span {
+        color: coral;
+      }
     }
   }
   .buy {
-    width: 80px;
-    float: right;
     display: flex;
     flex-direction: column;
-    align-self: center;
+    align-items: center;
     justify-content: center;
     button {
-      display: inline-block;
-      width: 50px;
-      height: 30px;
-      background-color: red;
+      border: 0;
+      width: 47px;
+      height: 28px;
       color: #fff;
-      border: none;
       border-radius: 4px;
+      background-color: red;
     }
   }
 }
