@@ -1,5 +1,11 @@
 # 喵眼
-### 文件目录树
+
+## 使用指导
+- `git pull  项目地址` 到本地
+- `npm i `
+- `npm run serve` 便可以开启项目
+
+## 文件目录树
 ```md
 ├── README.md 
 ├── babel.config.js
@@ -32,3 +38,6 @@
         ├── movie
         └── person
 ```
+
+## 初始化整个项目 
+- 使用`vue-cli`初始化整个项目 `vue create miaoyan` ,没有使用默认配置，是手动配置的。配置的`vue-router`,`vuex`,`node-sass`,`eslint`..
