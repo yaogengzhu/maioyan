@@ -45,6 +45,10 @@
 - 没有使用默认配置，是手动配置的。配置的`vue-router`,`vuex`,`node-sass`,`eslint`..
 
 ## 技术要点
+- [x] `proxy`
+- [x] `axios`
+
+## 技术要点分析
 1.使用`vue.config.js`中配置`proxy`反向数据代理 [具体可以参考](https://cli.vuejs.org/zh/config/#devserver-proxy)，看代码分析 
 ```js
 module.exports = {
