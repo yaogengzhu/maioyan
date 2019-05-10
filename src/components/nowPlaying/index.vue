@@ -171,9 +171,10 @@ export default {};
 
 <style lang="scss" scoped>
 #nowPlaying {
+  flex: 1;
   padding: 0 10px;
   ul {
-    margin-top: 40px;
+    margin-top: 50px;
   }
   .box {
     display: flex;

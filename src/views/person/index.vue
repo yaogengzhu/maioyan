@@ -1,6 +1,9 @@
 <template>
-    <div>
+    <div id="person">
        <Header title="个人中心"/>
+       <div class="content">
+           登陆
+       </div>
        <Footer />
     </div>
 </template>
@@ -17,6 +20,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+#person{
+    .content{
+        margin-top: 40px;
+    }
+}
 </style>

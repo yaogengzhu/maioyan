@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="result">
-        <p>动作片/科幻片/武侠片</p>
+      <p>动作片/科幻片/武侠片</p>
     </div>
   </div>
 </template>
@@ -18,7 +18,9 @@ export default {};
 
 <style lang="scss" scoped>
 #search {
+  flex: 1;
   width: 100%;
+  margin-top: 40px;
   .search-box {
     width: 100%;
     height: 50px;
@@ -43,12 +45,12 @@ export default {};
       }
     }
   }
-  .result{
-      padding: 0 15px;
-      height: 30px;
-      line-height: 30px;
-      color: #555;
-      border-bottom: 1px solid #ddd;
+  .result {
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    color: #555;
+    border-bottom: 1px solid #ddd;
   }
 }
 </style>

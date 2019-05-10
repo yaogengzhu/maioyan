@@ -2,7 +2,7 @@
   <div id="movie">
     <Header title="喵眼电影"/>
     <!-- 导航部分 -->
-    <div class="nav">
+    <div class="content">
       <ul class="nav-list">
         <router-link tag="li" to="/movie/cityList">
           宜昌
@@ -14,9 +14,9 @@
           <span class="iconfont search">&#xe751;</span>
         </router-link>
       </ul>
+      <!-- 挖一个坑来写子路由部分 -->
+      <router-view></router-view>
     </div>
-    <!-- 挖一个坑来写子路由部分 -->
-    <router-view></router-view>
     <Footer/>
   </div>
 </template>
@@ -36,15 +36,18 @@ export default {
 
 <style lang="scss" scoped>
 #movie {
-  position: relative;
-  margin-top: 80px;
+  // position: relative;
+  margin-top: 40px;
   margin-bottom: 80px;
-  .nav {
+  height: 100%;
+  .content {
+    display: flex;
     .nav-list {
       overflow: hidden;
       position: fixed;
       top: 40px;
       left: 0;
+      height: 40px;
       z-index: 999;
       background-color: #fff;
       width: 100%;
