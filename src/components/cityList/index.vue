@@ -85,11 +85,67 @@
 
 <script>
 export default {
-  mounted(){
-    // 获取数据 
-    this.axios.get('/api/cityList').then(res =>{
-      console.log(res)
-    })
+  data: function() {
+    return {
+      cityData: []
+    };
+  },
+  mounted() {
+    // 获取数据
+    this.axios.get("/api/cityList").then(res => {
+      // console.log(res.data.data);
+      var data = res.data.data.cities;
+      // 调用格式化
+      var dataList = this.formatCityList(data);
+      dataList.sort(function(a, b){
+        if (a.index >b.index){
+          return 1
+        } else if (a.index < b.index){
+          return -1
+        } else{
+          return 0
+        }
+      })
+      console.log(dataList)
+      // this.cityData = res.data.data
+    });
+  },
+  methods: {
+    //需要格式化数据
+    formatCityList(cities) {
+      // console.log(cities)
+      var cityList = [];
+      // var hostList = [];
+      // 循环遍历传递过来的数据
+      for (var i = 0; i < cities.length; i++) {
+        // 取出数组中每个单词的字母
+        var firstLetter = cities[i].py.substring(0, 1);
+        if (toCom()) {
+          cityList.push({
+            index: firstLetter,
+            list: [{ nm: cities[i].nm, id: cities[i].id }]
+          });
+        } else {
+          // 累加到已有索引
+          for (var j = 0; j < cityList.length; j++) {
+            if (cityList[j].index === firstLetter) {
+              cityList[j].list.push({ nm: cities[i].nm, id: cities[i].id });
+            }
+          }
+        }
+      }
+      //在写一个判断的函数
+      function toCom() {
+        for (var i = 0; i < cityList.length; i++) {
+          if (cityList[i].index === firstLetter) {
+            return false;
+          }
+        }
+        return true;
+      }
+      // console.log(cityList)
+      return cityList
+    }
   }
 };
 </script>
