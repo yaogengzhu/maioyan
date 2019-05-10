@@ -6,7 +6,7 @@
         <p>喵眼电影</p>
       </router-link>
       <router-link tag="li" to="/city">
-          <img src="@/assets/message.png" alt>
+          <img src="@/assets/CityHall.png" alt>
           <p>喵眼城市</p>
       </router-link>
       <router-link tag="li" to="/person">
@@ -23,7 +23,7 @@ export default {};
 
 <style lang="scss" scoped>
 #footer {
-  height: 80px;
+  // height: 60px;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -37,7 +37,7 @@ export default {};
   ul li {
     float: left;
     width: 33.3333%;
-    height: 80px;
+    height: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,12 +45,13 @@ export default {};
   }
   ul li img {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 18px;
+    height: 18px;
     // background-color: red;
   }
   ul li p {
     margin-top: 10px;
+    font-size: 14px;
   }
   .router-link-active{
     color: red;

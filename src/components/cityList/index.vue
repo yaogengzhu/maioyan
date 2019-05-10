@@ -84,7 +84,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted(){
+    // 获取数据 
+    this.axios.get('/api/cityList').then(res =>{
+      console.log(res)
+    })
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -93,7 +100,7 @@ export default {};
 }
 .city_body {
   margin-top: 80px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   display: flex;
   width: 100%;
   position: absolute;

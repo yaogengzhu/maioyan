@@ -38,7 +38,7 @@ export default {
 #movie {
   // position: relative;
   margin-top: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   height: 100%;
   .content {
     display: flex;

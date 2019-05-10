@@ -44,6 +44,29 @@
 - 使用命令 `vue create miaoyan` 
 - 没有使用默认配置，是手动配置的。配置的`vue-router`,`vuex`,`node-sass`,`eslint`..
 
+## 技术要点
+1.使用`vue.config.js`中配置`proxy`反向数据代理 [具体可以参考](https://cli.vuejs.org/zh/config/#devserver-proxy)，看代码分析 
+```js
+module.exports = {
+  devServer:{
+    proxy{
+      '/api':{
+        target:'url',
+        changeOrigin:true
+      }
+    }
+  }
+}
+```
+2.使用axios 发送ajax请求。
+```js  
+//安装axios    npm i axios -S  
+// 引入 
+import axios from 'axios'
+// 将axios放入Vue原型中 ，以便与好调用 
+Vue.prototype.axios = axios
+```
+
 ## 项目结构分析
 本次项目方式全部将采用子组件方式去创建，可以根据目录看到
 - `views`文件作为视图层，作为三个大的单页面去实现
