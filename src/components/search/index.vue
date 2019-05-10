@@ -1,15 +1,54 @@
 <template>
-    <div id="search">
-        搜索
+  <div id="search">
+    <div class="search-box">
+      <div class="search-content">
+        <input type="text" autofocus placeholder="请输入关键字">
+        <span class="iconfont">&#xe751;</span>
+      </div>
     </div>
+    <div class="result">
+        <p>动作片/科幻片/武侠片</p>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+#search {
+  width: 100%;
+  .search-box {
+    width: 100%;
+    height: 50px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .search-content {
+      position: relative;
+      width: 90%;
+      input {
+        width: 100%;
+        height: 30px;
+        padding: 0 10px 0 30px;
+        box-sizing: border-box;
+        outline: none;
+      }
+      span {
+        position: absolute;
+        top: 8px;
+        left: 6px;
+      }
+    }
+  }
+  .result{
+      padding: 0 15px;
+      height: 30px;
+      line-height: 30px;
+      color: #555;
+      border-bottom: 1px solid #ddd;
+  }
+}
 </style>

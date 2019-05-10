@@ -177,13 +177,16 @@ export default {};
   }
   .box {
     display: flex;
-    height: 100px;
+    // height: 1px;
+    align-self: center;
     margin: 15px 0;
   }
   .img {
     width: 64px;
+    height: 90px;
     img {
       width: 100%;
+      height: auto;
     }
   }
   .info {

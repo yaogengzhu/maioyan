@@ -36,11 +36,14 @@ export default {
 
 <style lang="scss" scoped>
 #movie {
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 80px;
   .nav {
-    margin-top: 40px;
     .nav-list {
+      overflow: hidden;
       position: fixed;
-      top: 40;
+      top: 40px;
       left: 0;
       z-index: 999;
       background-color: #fff;
