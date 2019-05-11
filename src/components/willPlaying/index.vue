@@ -1,21 +1,21 @@
 <template>
   <div id="willPlaying">
     <ul>
-      <li class="box">
+      <li class="box" v-for="item in comingList" :key="item.id">
         <div class="img">
-          <img src="../../assets/movie.jpg" alt>
+          <img :src="item.img | imgFormat('128.180')" alt>
         </div>
         <div class="info">
           <h2>
-            复仇者联盟：终极之战
-            <img src="../../assets/max.png" alt>
+            {{ item.nm }}
+            <!-- <img src="../../assets/max.png" alt> -->
           </h2>
           <p>
             影评：
-            <span>9.0</span>
+            <span>{{ item.sc!==0?item.sc:'暂未上映' }}</span>
           </p>
-          <p>主演: 小罗伯特·唐尼,克里斯·埃文斯,马克·鲁法洛</p>
-          <p>今天25家影院放映252场</p>
+          <p>主演: {{ item.star }}</p>
+          <p>{{ item.showInfo!==''?item.showInfo:'暂无消息' }}</p>
         </div>
         <div class="buy">
           <button>预售</button>
@@ -26,7 +26,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      comingList:[]
+    }
+  },
+  mounted(){
+    // 获取数据 
+    this.axios.get('/api/movieComingList?cityId=10').then( res =>{
+      // console.log(res)
+      if(res.status ===200 ){
+        this.comingList = res.data.data.comingList
+      }
+    })
+  }
+};
 </script>
 
 <style lang="scss" scoped>

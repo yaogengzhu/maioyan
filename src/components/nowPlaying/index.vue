@@ -12,7 +12,7 @@
           </h2>
           <p>
             影评：
-            <span>{{ item.sc }}</span>
+            <span>{{ item.sc !==0?item.sc:'暂无评分' }}</span>
           </p>
           <p>主演: {{ item.star }}</p>
           <p>{{ item.showInfo }}</p>
