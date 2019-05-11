@@ -8,6 +8,11 @@ Vue.config.productionTip = false
 // 配置axios  
 Vue.prototype.axios = axios
 
+// 写一个全局过滤  
+Vue.filter('imgFormat', (url, arg) =>{
+  return url.replace(/w\.h/,arg)
+})
+
 new Vue({
   router,
   store,

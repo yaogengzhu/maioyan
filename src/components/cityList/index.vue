@@ -46,7 +46,9 @@ export default {
   methods: {
     // 对单词首字母进行
     formatCityList(cities) {
+      // 检查数据是否传入
       // console.log(cities)
+      // 这里可以作出一个判断？ 判断数据是否正确传入
       var cityList = [];
       // var hostList = [];
       // 循环遍历传递过来的数据
