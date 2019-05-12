@@ -8,7 +8,7 @@
         <div class="info">
           <h2>
             {{ item.nm }}
-            <img src="../../assets/max.png" v-if="item.version" alt>
+            <img src="@/assets/max.png" v-if="item.version" alt>
           </h2>
           <p>
             影评：

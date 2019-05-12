@@ -5,19 +5,19 @@ export default {
     children:[
         {
             path:'cityList',
-            component:()=> import('@/components/cityList')
+            component:()=> import('@/components/movieIndex/cityList')
         },
         {
             path:'nowPlaying',
-            component:() => import ('@/components/nowPlaying')
+            component:() => import ('@/components/movieIndex/nowPlaying')
         },
         {
             path:'willPlaying',
-            component: () => import ('@/components/willPlaying')
+            component: () => import ('@/components/movieIndex/willPlaying')
         },
         {
             path:'search',
-            component: () => import ('@/components/search')
+            component: () => import ('@/components/movieIndex/search')
         }
     ]
 }
