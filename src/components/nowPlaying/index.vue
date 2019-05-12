@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name:'nowPlaying',
   data(){
     return {
       movieList:[]

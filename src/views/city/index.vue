@@ -1,7 +1,6 @@
 <template>
     <div>
         <Header title="喵眼城市"/>
-        
         <Footer />
     </div>
 </template>

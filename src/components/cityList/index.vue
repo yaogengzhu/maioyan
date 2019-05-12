@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  name:'cityList',
   data: function() {
     return {
       cityData: [],

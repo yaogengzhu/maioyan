@@ -7,6 +7,7 @@
 <script>
 export default {
     // 添加name ，放便好调试。
+    name:'header',
     props:{
         title:{
             type:String,

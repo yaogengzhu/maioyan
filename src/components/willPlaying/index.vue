@@ -27,6 +27,7 @@
 
 <script>
 export default {
+  name:'willPlaing',
   data(){
     return{
       comingList:[]

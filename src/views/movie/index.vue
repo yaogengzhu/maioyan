@@ -15,7 +15,9 @@
         </router-link>
       </ul>
       <!-- 挖一个坑来写子路由部分 -->
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <Footer/>
   </div>
