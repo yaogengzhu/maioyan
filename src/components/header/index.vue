@@ -1,5 +1,5 @@
 <template>
-    <div id="header">
+    <div id="headerPage">
        <h1>{{ title }}</h1>
     </div>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
     // 添加name ，放便好调试。
-    name:'header',
+    name:'headerPage',
     props:{
         title:{
             type:String,
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    #header{
+    #headerPage{
         position: fixed;
         top: 0;
         left:0;

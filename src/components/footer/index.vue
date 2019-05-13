@@ -1,5 +1,5 @@
 <template>
-  <div id="footer">
+  <div id="footerPage">
     <ul class="menu-list">
       <router-link tag="li" to="/movie">
         <img src="@/assets/movie.png" alt>
@@ -19,12 +19,12 @@
 
 <script>
 export default {
-  name:'footer'
+  name:'footerPage'
 };
 </script>
 
 <style lang="scss" scoped>
-#footer {
+#footerPage {
   // height: 60px;
   width: 100%;
   position: fixed;

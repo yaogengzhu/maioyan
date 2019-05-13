@@ -1,25 +1,63 @@
 <template>
-  <div id="search">
+  <div id="searchPage">
     <div class="search-box">
       <div class="search-content">
-        <input type="text" autofocus placeholder="请输入关键字">
+        <input type="text" autofocus placeholder="请输入关键字" v-model="query">
         <span class="iconfont">&#xe751;</span>
       </div>
     </div>
     <div class="result">
       <p>动作片/科幻片/武侠片</p>
     </div>
+    <div class="search-result">
+      <ul>
+        <li v-for="item in movieList" :key="item.id">
+          <div class="img">
+            <img :src="item.img | imgFormat('128.180')" alt>
+          </div>
+          <div class="info">
+            <h2>{{item.nm}}</h2>
+            <p>{{ item.enm }}</p>
+            <p>评分：{{ item.sc }}</p>
+            <p>主演：{{ item.star }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name:'search'
+  name: "searchPage",
+  data() {
+    return {
+      query: "",
+      movieList: [] // 存放电影列表数据
+    };
+  },
+  // 使用watch发起监听异步请求
+  watch: {
+    query: function(newVal) {
+      // console.log(newVal);
+      // 发送axios请求
+      this.axios.get("/api/searchList?cityId=10&kw=" + newVal).then(res => {
+        // console.log(res)
+        // console.log(res.data.data.movies);
+        if (newVal && res.status === 200 && res.data.data.movies.list) {
+          this.movieList = res.data.data.movies.list;
+        }
+      })
+      if (newVal === ''){
+        this.movieList.length = 0
+      }
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-#search {
+#searchPage {
   flex: 1;
   width: 100%;
   margin-top: 40px;
@@ -53,6 +91,35 @@ export default {
     line-height: 30px;
     color: #555;
     border-bottom: 1px solid #ddd;
+  }
+  .search-result {
+    padding: 10px;
+    width: 100%;
+    ul li {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      .img {
+        width: 64px;
+        height: 90px;
+        img {
+          display: block;
+          width: 100%;
+          background-color: red;
+        }
+      }
+      .info {
+        flex: 1;
+        padding-left: 15px;
+        h2{
+          font-weight: 500;
+        }
+        p{
+          font-size: 12px;
+          margin: 10px;
+        }
+      }
+    }
   }
 }
 </style>
