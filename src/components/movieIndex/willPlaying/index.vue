@@ -27,20 +27,20 @@
 
 <script>
 export default {
-  name:'willPlaing',
-  data(){
-    return{
-      comingList:[]
-    }
+  name: "willPlaing",
+  data() {
+    return {
+      comingList: []
+    };
   },
-  mounted(){
-    // 获取数据 
-    this.axios.get('/api/movieComingList?cityId=10').then( res =>{
+  mounted() {
+    // 获取数据
+    this.axios.get("/api/movieComingList?cityId=10").then(res => {
       // console.log(res)
-      if(res.status ===200 ){
-        this.comingList = res.data.data.comingList
+      if (res.status === 200) {
+        this.comingList = res.data.data.comingList;
       }
-    })
+    });
   }
 };
 </script>
@@ -50,7 +50,9 @@ export default {
   flex: 1;
   padding: 0 10px;
   ul {
-    margin-top: 50px;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    overflow: auto;
   }
   .box {
     display: flex;

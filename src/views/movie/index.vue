@@ -39,11 +39,13 @@ export default {
 <style lang="scss" scoped>
 #movie {
   // position: relative;
-  margin-top: 40px;
-  margin-bottom: 60px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   .content {
     display: flex;
+    flex: 1;
+    height: 100%;
     .nav-list {
       overflow: hidden;
       position: fixed;

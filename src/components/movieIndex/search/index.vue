@@ -77,7 +77,9 @@ export default {
 #searchPage {
   flex: 1;
   width: 100%;
-  margin-top: 40px;
+  // margin-top: 40px;
+  padding-top: 80px;
+  padding-bottom: 60px;
   .search-box {
     width: 100%;
     height: 50px;

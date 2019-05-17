@@ -1,5 +1,5 @@
 <template>
-  <div id="nowPlaying">
+  <div id="nowPlaying" ref="wrapper">
     <ul>
       <li class="box" v-for="item in movieList" :key="item.id">
         <div class="img">
@@ -26,27 +26,35 @@
 </template>
 
 <script>
+// 引入better-scroll
+import BScroll from "better-scroll";
 export default {
-  name:'nowPlaying',
-  data(){
+  name: "nowPlaying",
+  data() {
     return {
-      movieList:[]
-    }
+      movieList: []
+    };
   },
-  // 页面加载获取数据 
-  mounted(){
-    this.axios.get('/api/movieOnInfoList?cityId=10').then( res =>{
+  // 页面加载获取数据
+  mounted() {
+    this.axios.get("/api/movieOnInfoList?cityId=10").then(res => {
       // console.log(res.status)
-      // 作出判断数据是否获取成功 
+      // 作出判断数据是否获取成功
       if (res.status) {
-        this.movieList = res.data.data.movieList
+        this.movieList = res.data.data.movieList;
       }
-    })
+    });
+
+    this.$nextTick(() => {
+      new BScroll(this.$refs.wrapper,{
+        
+      });
+    });
   },
   // 私有过滤器
-  filters:{
-    imgFormat: (data,arg) => {
-      return data.replace(/w\.h/,arg)
+  filters: {
+    imgFormat: (data, arg) => {
+      return data.replace(/w\.h/, arg);
     }
   }
 };
@@ -56,65 +64,69 @@ export default {
 #nowPlaying {
   flex: 1;
   padding: 0 10px;
+  // height: 300px;
+  margin-top: 80px;
+  margin-bottom: 60px;
   ul {
-    margin-top: 50px;
-  }
-  .box {
-    display: flex;
-    // height: 1px;
-    align-self: center;
-    margin: 15px 0;
-  }
-  .img {
-    width: 64px;
-    height: 90px;
-    img {
-      width: 100%;
-      height: auto;
+    overflow: auto;
+    padding-bottom: 60px;
+    .box {
+      display: flex;
+      // height: 1px;
+      align-self: center;
+      margin: 15px 0;
     }
-  }
-  .info {
-    flex: 1;
-    margin-left: 10px;
-    position: relative;
-    h2 {
-      width: 150px;
-      margin-bottom: 15px;
-      font-weight: 500;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+    .img {
+      width: 64px;
+      height: 90px;
       img {
-        position: absolute;
-        top: 0;
-        right: 10px;
-        width: 50px;
+        width: 100%;
+        height: auto;
       }
     }
-    p {
-      width: 200px;
-      margin: 10px 0;
-      font-size: 12px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      span {
-        color: coral;
+    .info {
+      flex: 1;
+      margin-left: 10px;
+      position: relative;
+      h2 {
+        width: 150px;
+        margin-bottom: 15px;
+        font-weight: 500;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        img {
+          position: absolute;
+          top: 0;
+          right: 10px;
+          width: 50px;
+        }
+      }
+      p {
+        width: 200px;
+        margin: 10px 0;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        span {
+          color: coral;
+        }
       }
     }
-  }
-  .buy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    button {
-      border: 0;
-      width: 47px;
-      height: 28px;
-      color: #fff;
-      border-radius: 4px;
-      background-color: red;
+    .buy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      button {
+        border: 0;
+        width: 47px;
+        height: 28px;
+        color: #fff;
+        border-radius: 4px;
+        background-color: red;
+      }
     }
   }
 }
