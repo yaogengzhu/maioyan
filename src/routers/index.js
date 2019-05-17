@@ -12,7 +12,7 @@ export default new Router({
   routes: [
     {
       path:'/',
-      redirect:'/movie/nowPlaying'
+      redirect:'/movie'
     },
    movieRouter,
    cityRouter,

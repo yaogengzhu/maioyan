@@ -33,7 +33,8 @@ export default {
   data() {
     return {
       query: "",
-      movieList: [] // 存放电影列表数据
+      movieList: [], // 存放电影列表数据
+      cancelTokenFn: null
     };
   },
   // 使用watch发起监听异步请求
@@ -41,15 +42,31 @@ export default {
     query: function(newVal) {
       // console.log(newVal);
       // 发送axios请求
-      this.axios.get("/api/searchList?cityId=10&kw=" + newVal).then(res => {
-        // console.log(res)
-        // console.log(res.data.data.movies);
-        if (newVal && res.status === 200 && res.data.data.movies.list) {
-          this.movieList = res.data.data.movies.list;
-        }
-      })
-      if (newVal === ''){
-        this.movieList.length = 0
+      // 设置函数抖动
+      const _this = this;
+      const CancelToken = this.axios.CancelToken;
+
+      this.cancelTokenFn && this.cancelTokenFn();
+      this.cancelTokenFn = null;
+      this.axios
+        .get("/api/searchList?cityId=10&kw=" + newVal, {
+          cancelToken: new CancelToken(function executor(c) {
+            _this.cancelTokenFn = c;
+          })
+        })
+        .then(res => {
+          // console.log(res)
+          // console.log(res.data.data.movies);
+          if (newVal && res.status === 200 && res.data.data.movies.list) {
+            this.movieList = res.data.data.movies.list;
+          }
+        })
+        .catch(() => {
+          // ❌信息提示
+          // console.log(err);
+        });
+      if (newVal === "") {
+        this.movieList.length = 0;
       }
     }
   }
@@ -111,10 +128,10 @@ export default {
       .info {
         flex: 1;
         padding-left: 15px;
-        h2{
+        h2 {
           font-weight: 500;
         }
-        p{
+        p {
           font-size: 12px;
           margin: 10px;
         }
