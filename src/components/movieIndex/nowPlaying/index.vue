@@ -1,7 +1,8 @@
 <template>
   <div id="nowPlaying" ref="wrapper">
     <ul>
-      <li class="box" v-for="item in movieList" :key="item.id">
+      <li v-if="flag" style="text-align:center">{{ msg }}</li>
+      <li class="box" v-for="item in movieList" :key="item.id" @tap="change">
         <div class="img">
           <img :src="item.img | imgFormat('128.180')" alt>
         </div>
@@ -32,8 +33,15 @@ export default {
   name: "nowPlaying",
   data() {
     return {
-      movieList: []
+      movieList: [],
+      flag: false,
+      msg: "正在刷新"
     };
+  },
+  methods: {
+    change() {
+      console.log("ok");
+    }
   },
   // 页面加载获取数据
   mounted() {
@@ -46,8 +54,25 @@ export default {
     });
 
     this.$nextTick(() => {
-      new BScroll(this.$refs.wrapper,{
-        
+      var scroll = new BScroll(this.$refs.wrapper, {
+        tap: true,
+        probeType: 1
+      });
+      //  上拉刷新
+      scroll.on("scroll", () => {
+        this.msg = "正在更新";
+        this.flag = true;
+        // setTimeout(() => {
+        //   this.flag = true;
+        // }, 1000);
+      });
+      scroll.on("scrollEnd", () => {
+        // console.log("end");
+        this.msg = "更新完成";
+        // this.flag = false;
+        setTimeout(() => {
+          this.flag = false;
+        }, 1000);
       });
     });
   },
@@ -69,7 +94,6 @@ export default {
   margin-bottom: 60px;
   ul {
     overflow: auto;
-    padding-bottom: 60px;
     .box {
       display: flex;
       // height: 1px;
