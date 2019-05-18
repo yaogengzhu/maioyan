@@ -8,7 +8,7 @@
           {{ $store.state.city.nm}}
           <span class="iconfont">&#xe65a;</span>
         </router-link>
-        <router-link tag="li" to="/movie/NowPlaying">正在热映</router-link>
+        <router-link tag="li" to="/movie/nowPlaying">正在热映</router-link>
         <router-link tag="li" to="/movie/willPlaying">即将上映</router-link>
         <router-link tag="li" to="/movie/search">
           <span class="iconfont search">&#xe751;</span>
