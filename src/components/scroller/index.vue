@@ -25,7 +25,7 @@ export default {
   mounted() {
     // 实例化better-scroll
     var scroll = new BScroll(this.$refs.box1, {
-      tag: true,
+      tap: true,
       // scroll重要参数，必写
       probeType: 1
     });

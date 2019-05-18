@@ -5,7 +5,7 @@
     <div class="content">
       <ul class="nav-list">
         <router-link tag="li" to="/movie/cityList">
-          宜昌
+          {{ $store.state.city.nm}}
           <span class="iconfont">&#xe65a;</span>
         </router-link>
         <router-link tag="li" to="/movie/NowPlaying">正在热映</router-link>

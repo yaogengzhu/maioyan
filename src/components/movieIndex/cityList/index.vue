@@ -8,14 +8,23 @@
           <div class="city_hot">
             <h2>热门城市</h2>
             <ul class="clearfix">
-              <li v-for="item in hostCity" :key="item.id">{{ item.nm }}</li>
+              <!-- tap点击事件处理城市信息 -->
+              <li
+                v-for="item in hostCity"
+                :key="item.id"
+                @tap="changCity(item.nm,item.id)"
+              >{{ item.nm }}</li>
             </ul>
           </div>
           <div class="city_sort" ref="city_sort">
             <div v-for="item in cityData" :key="item.id">
               <h2>{{ item.index }}</h2>
               <ul>
-                <li v-for=" list  in item.list" :key="list.id">{{ list.nm }}</li>
+                <li
+                  v-for=" list  in item.list"
+                  :key="list.id"
+                  @tap="changCity(list.nm,list.id)"
+                >{{ list.nm }}</li>
               </ul>
             </div>
           </div>
@@ -150,6 +159,17 @@ export default {
       // 调用了组件中的方法  使用ref标记
       // 注意：将ref放在组件上，则this.$refs.组件名可以拿到组件的对象，拿到组件对象就可以调用组件对象中的方法
       this.$refs.jump.jump(-h2[index].offsetTop);
+    },
+    // 点击改变城市city
+    changCity(nm, id) {
+      // console.log(nm, id)
+      // 调用vuex中的mutations中的方法进行处理  ok
+      this.$store.commit("city/CITY_INFO", { nm, id });
+      // 为了返回时，城市数据不再该改变。将数据本地化处理
+      window.localStorage.setItem("city_nm", nm);
+      window.localStorage.setItem("city_id", id);
+      // 编程式导航
+      this.$router.push("/movie/nowPlaying");
     }
   }
 };
