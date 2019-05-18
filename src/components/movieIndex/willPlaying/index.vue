@@ -1,6 +1,7 @@
 <template>
   <div id="willPlaying">
-    <scroller>
+    <loading v-if="isLoading"></loading>
+    <scroller v-else> 
       <ul>
         <li class="box" v-for="item in comingList" :key="item.id">
           <div class="img">
@@ -32,7 +33,8 @@ export default {
   name: "willPlaing",
   data() {
     return {
-      comingList: []
+      comingList: [],
+      isLoading:true
     };
   },
   mounted() {
@@ -41,6 +43,8 @@ export default {
       // console.log(res)
       if (res.status === 200) {
         this.comingList = res.data.data.comingList;
+        // 将loading取消 
+        this.isLoading = false;
       }
     });
   }

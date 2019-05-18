@@ -1,7 +1,8 @@
 <template>
   <div class="city_body">
     <div class="city_list">
-      <scroller ref="jump">
+      <loading v-if="isLoading"></loading>
+      <scroller ref="jump" v-else>
         <!-- 由于下面有两个部分，所以补一个div -->
         <div>
           <div class="city_hot">
@@ -39,17 +40,22 @@ export default {
   data: function() {
     return {
       cityData: [],
-      hostCity: []
+      hostCity: [],
+      isLoading: true
     };
   },
   mounted() {
     // 获取数据
     this.axios.get("/api/cityList").then(res => {
       // console.log(res.data.data)
-      var data = res.data.data.cities;
-      // 对数据进行处理
-      this.cityData = this.formatCityList(data);
-      this.hostCity = this.chooseHotCity(data);
+      if (res.status === 200) {
+        var data = res.data.data.cities;
+        // 对数据进行处理
+        this.cityData = this.formatCityList(data);
+        this.hostCity = this.chooseHotCity(data);
+        // 数据处理成功之后，将isLoading 变成false
+        this.isLoading = false;
+      }
     });
   },
   methods: {

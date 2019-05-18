@@ -9,6 +9,7 @@
     <div class="result">
       <p>动作片/科幻片/武侠片</p>
     </div>
+    <loading v-if="isLoading"></loading>
     <div class="search-result">
       <ul>
         <li v-for="item in movieList" :key="item.id">
@@ -34,7 +35,8 @@ export default {
     return {
       query: "",
       movieList: [], // 存放电影列表数据
-      cancelTokenFn: null
+      cancelTokenFn: null,
+      isLoading:false
     };
   },
   // 使用watch发起监听异步请求
@@ -43,6 +45,7 @@ export default {
       // console.log(newVal);
       // 发送axios请求
       // 设置函数抖动
+      this.isLoading = true;
       const _this = this;
       const CancelToken = this.axios.CancelToken;
 
@@ -59,6 +62,8 @@ export default {
           // console.log(res.data.data.movies);
           if (newVal && res.status === 200 && res.data.data.movies.list) {
             this.movieList = res.data.data.movies.list;
+            // 数据处理成功之后，将loading 取消
+            this.isLoading = false;
           }
         })
         .catch(() => {
@@ -67,6 +72,8 @@ export default {
         });
       if (newVal === "") {
         this.movieList.length = 0;
+        //  清除输入框，也将isLoading变成false
+        this.isLoading =false;
       }
     }
   }

@@ -111,7 +111,7 @@ export default {
           color: #444;
           .name {
             display: inline-block;
-            width: 300px;
+            width: 250px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;

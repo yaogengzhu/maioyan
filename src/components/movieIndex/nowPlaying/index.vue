@@ -1,7 +1,8 @@
 <template>
   <div id="nowPlaying" ref="wrapper">
     <!-- 处理子组件传递过来的数据 -->
-    <scroller :changeScroll="changeScroll" :changeTouchEnd="changeTouch">
+    <loading v-if="isLoading"></loading>
+    <scroller :changeScroll="changeScroll" :changeTouchEnd="changeTouch" v-else>
       <ul>
         <li v-if="flag" style="text-align:center">{{ msg }}</li>
         <li class="box" v-for="item in movieList" :key="item.id" @tap="change">
@@ -38,7 +39,8 @@ export default {
     return {
       movieList: [],
       flag: false,
-      msg: "正在刷新"
+      msg: "正在刷新",
+      isLoading:true   // 加载动画默认值为true
     };
   },
   methods: {
@@ -65,8 +67,9 @@ export default {
     this.axios.get("/api/movieOnInfoList?cityId=10").then(res => {
       // console.log(res.status)
       // 作出判断数据是否获取成功
-      if (res.status) {
+      if (res.status === 200) {
         this.movieList = res.data.data.movieList;
+        this.isLoading = false;
       }
     });
     // this.$nextTick(() => {

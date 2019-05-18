@@ -12,9 +12,12 @@ Vue.prototype.axios = axios
 Vue.filter('imgFormat', (url, arg) =>{
   return url.replace(/w\.h/,arg)
 })
-// 注册一个全局组件 
+// 注册一个全局滑动组件 
 import scroller from '@/components/scroller'
 Vue.component('scroller',scroller)
+// 注册一个全局的loading组件
+import loading from '@/components/loading'
+Vue.component('loading',loading)
 
 new Vue({
   router,
