@@ -45,18 +45,38 @@ export default {
     };
   },
   mounted() {
-    // 获取数据
-    this.axios.get("/api/cityList").then(res => {
-      // console.log(res.data.data)
-      if (res.status === 200) {
-        var data = res.data.data.cities;
-        // 对数据进行处理
-        this.cityData = this.formatCityList(data);
-        this.hostCity = this.chooseHotCity(data);
-        // 数据处理成功之后，将isLoading 变成false
-        this.isLoading = false;
-      }
-    });
+    // 获取本次存储
+    let cityData = window.localStorage.getItem("cityList");
+    let hostCity = window.localStorage.getItem("hostCity");
+    // 判断本地存储是否存在，存在就不发送ajax请求
+    if (cityData && hostCity) {
+      this.cityData = JSON.parse(cityData);
+      this.hostCity = JSON.parse(hostCity);
+      this.isLoading = false;
+    } else {
+      // 获取数据
+      this.axios.get("/api/cityList").then(res => {
+        // console.log(res.data.data)
+        if (res.status === 200) {
+          var data = res.data.data.cities;
+          // 对数据进行处理
+          this.cityData = this.formatCityList(data);
+          this.hostCity = this.chooseHotCity(data);
+          // 将数据进行本地存储
+          window.localStorage.setItem(
+            "cityList",
+            JSON.stringify(this.formatCityList(data))
+          );
+          window.localStorage.setItem(
+            "hostCity",
+            JSON.stringify(this.chooseHotCity(data))
+          );
+
+          // 数据处理成功之后，将isLoading 变成false
+          this.isLoading = false;
+        }
+      });
+    }
   },
   methods: {
     // 对单词首字母进行
