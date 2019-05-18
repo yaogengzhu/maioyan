@@ -1,24 +1,33 @@
 <template>
   <div class="city_body">
     <div class="city_list">
-      <div class="city_hot">
-        <h2>热门城市</h2>
-        <ul class="clearfix">
-          <li v-for="item in hostCity" :key="item.id">{{ item.nm }}</li>
-        </ul>
-      </div>
-      <div class="city_sort" ref="city_sort">
-        <div v-for="item in cityData" :key="item.id">
-          <h2>{{ item.index }}</h2>
-          <ul>
-            <li v-for=" list  in item.list" :key="list.id">{{ list.nm }}</li>
-          </ul>
+      <scroller ref="jump">
+        <!-- 由于下面有两个部分，所以补一个div -->
+        <div>
+          <div class="city_hot">
+            <h2>热门城市</h2>
+            <ul class="clearfix">
+              <li v-for="item in hostCity" :key="item.id">{{ item.nm }}</li>
+            </ul>
+          </div>
+          <div class="city_sort" ref="city_sort">
+            <div v-for="item in cityData" :key="item.id">
+              <h2>{{ item.index }}</h2>
+              <ul>
+                <li v-for=" list  in item.list" :key="list.id">{{ list.nm }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+      </scroller>
     </div>
     <div class="city_index">
       <ul>
-        <li v-for="(item,index) in cityData" :key ="item.id" @click="toTarget(index)">{{ item.index }}</li>
+        <li
+          v-for="(item,index) in cityData"
+          :key="item.id"
+          @click="toTarget(index)"
+        >{{ item.index }}</li>
       </ul>
     </div>
   </div>
@@ -26,7 +35,7 @@
 
 <script>
 export default {
-  name:'cityList',
+  name: "cityList",
   data: function() {
     return {
       cityData: [],
@@ -37,11 +46,10 @@ export default {
     // 获取数据
     this.axios.get("/api/cityList").then(res => {
       // console.log(res.data.data)
-      var data = res.data.data.cities
+      var data = res.data.data.cities;
       // 对数据进行处理
-      this.cityData = this.formatCityList(data)
-      this.hostCity = this.chooseHotCity(data)
-
+      this.cityData = this.formatCityList(data);
+      this.hostCity = this.chooseHotCity(data);
     });
   },
   methods: {
@@ -94,24 +102,28 @@ export default {
       return cityList;
     },
     // 选出热门城市
-    chooseHotCity(cities){
-      let hostCity = []
-      for (var i = 0; i< cities.length; i++){
-        if (cities[i].isHot === 1){
-          hostCity.push(cities[i])
+    chooseHotCity(cities) {
+      let hostCity = [];
+      for (var i = 0; i < cities.length; i++) {
+        if (cities[i].isHot === 1) {
+          hostCity.push(cities[i]);
         }
       }
-      return hostCity
+      return hostCity;
     },
-    // 点击字母进行跳转 
-    toTarget(index){
+    // 点击字母进行跳转
+    toTarget(index) {
       // console.log(index)
-      // 处理dom 
-      let h2 = this.$refs.city_sort.getElementsByTagName('h2')
+      // 处理dom
+      let h2 = this.$refs.city_sort.getElementsByTagName("h2");
       // console.log(h2)
       // console.log(this.$refs.city_sort.parentNode.scrollTop)
       // 给父级的scrollTop 设置为 当前h2的卷曲出去的高度
-      this.$refs.city_sort.parentNode.scrollTop = h2[index].offsetTop
+      // this.$refs.city_sort.parentNode.scrollTop = h2[index].offsetTop;
+      // this.$refs.jump.jump(-h2[index].offsetTop);
+      // 调用了组件中的方法  使用ref标记
+      // 注意：将ref放在组件上，则this.$refs.组件名可以拿到组件的对象，拿到组件对象就可以调用组件对象中的方法
+      this.$refs.jump.jump(-h2[index].offsetTop);
     }
   }
 };
@@ -132,6 +144,7 @@ export default {
 }
 .city_body .city_list {
   flex: 1;
+  width: 100%;
   overflow: auto;
   background: #fff5f0;
 }
@@ -189,7 +202,7 @@ export default {
   justify-content: center;
   text-align: center;
   border-left: 1px #e6e6e6 solid;
-  li{
+  li {
     margin: 7px 0;
   }
 }

@@ -1,27 +1,29 @@
 <template>
   <div id="willPlaying">
-    <ul>
-      <li class="box" v-for="item in comingList" :key="item.id">
-        <div class="img">
-          <img :src="item.img | imgFormat('128.180')" alt>
-        </div>
-        <div class="info">
-          <h2>
-            {{ item.nm }}
-            <!-- <img src="../../assets/max.png" alt> -->
-          </h2>
-          <p>
-            影评：
-            <span>{{ item.sc!==0?item.sc:'暂未上映' }}</span>
-          </p>
-          <p>主演: {{ item.star }}</p>
-          <p>{{ item.showInfo!==''?item.showInfo:'暂无消息' }}</p>
-        </div>
-        <div class="buy">
-          <button>预售</button>
-        </div>
-      </li>
-    </ul>
+    <scroller>
+      <ul>
+        <li class="box" v-for="item in comingList" :key="item.id">
+          <div class="img">
+            <img :src="item.img | imgFormat('128.180')" alt>
+          </div>
+          <div class="info">
+            <h2>
+              {{ item.nm }}
+              <!-- <img src="../../assets/max.png" alt> -->
+            </h2>
+            <p>
+              影评：
+              <span>{{ item.sc!==0?item.sc:'暂未上映' }}</span>
+            </p>
+            <p>主演: {{ item.star }}</p>
+            <p>{{ item.showInfo!==''?item.showInfo:'暂无消息' }}</p>
+          </div>
+          <div class="buy">
+            <button>预售</button>
+          </div>
+        </li>
+      </ul>
+    </scroller>
   </div>
 </template>
 
@@ -48,6 +50,7 @@ export default {
 <style lang="scss" scoped>
 #willPlaying {
   flex: 1;
+  height: 100%;
   padding: 0 10px;
   ul {
     padding-top: 80px;

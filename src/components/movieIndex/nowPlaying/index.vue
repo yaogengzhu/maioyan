@@ -1,34 +1,37 @@
 <template>
   <div id="nowPlaying" ref="wrapper">
-    <ul>
-      <li v-if="flag" style="text-align:center">{{ msg }}</li>
-      <li class="box" v-for="item in movieList" :key="item.id" @tap="change">
-        <div class="img">
-          <img :src="item.img | imgFormat('128.180')" alt>
-        </div>
-        <div class="info">
-          <h2>
-            {{ item.nm }}
-            <img src="@/assets/max.png" v-if="item.version" alt>
-          </h2>
-          <p>
-            影评：
-            <span>{{ item.sc !==0?item.sc:'暂无评分' }}</span>
-          </p>
-          <p>主演: {{ item.star }}</p>
-          <p>{{ item.showInfo }}</p>
-        </div>
-        <div class="buy">
-          <button>购买</button>
-        </div>
-      </li>
-    </ul>
+    <!-- 处理子组件传递过来的数据 -->
+    <scroller :changeScroll="changeScroll" :changeTouchEnd="changeTouch">
+      <ul>
+        <li v-if="flag" style="text-align:center">{{ msg }}</li>
+        <li class="box" v-for="item in movieList" :key="item.id" @tap="change">
+          <div class="img">
+            <img :src="item.img | imgFormat('128.180')" alt>
+          </div>
+          <div class="info">
+            <h2>
+              {{ item.nm }}
+              <img src="@/assets/max.png" v-if="item.version" alt>
+            </h2>
+            <p>
+              影评：
+              <span>{{ item.sc !==0?item.sc:'暂无评分' }}</span>
+            </p>
+            <p>主演: {{ item.star }}</p>
+            <p>{{ item.showInfo }}</p>
+          </div>
+          <div class="buy">
+            <button>购买</button>
+          </div>
+        </li>
+      </ul>
+    </scroller>
   </div>
 </template>
 
 <script>
-// 引入better-scroll
-import BScroll from "better-scroll";
+// 引入better-scroll   (⚠️使用全局组册scroll组件 )
+// import BScroll from "better-scroll";
 export default {
   name: "nowPlaying",
   data() {
@@ -40,7 +43,21 @@ export default {
   },
   methods: {
     change() {
-      console.log("ok");
+      // console.log("ok");
+    },
+    changeScroll() {
+      // console.log();
+      this.msg = "正在更新";
+      this.flag = true;
+      setTimeout(() => {
+        this.flag = true;
+      }, 1000);
+    },
+    changeTouch() {
+      this.msg = "更新完成";
+      setTimeout(() => {
+        this.flag = false;
+      }, 1000);
     }
   },
   // 页面加载获取数据
@@ -52,29 +69,28 @@ export default {
         this.movieList = res.data.data.movieList;
       }
     });
-
-    this.$nextTick(() => {
-      var scroll = new BScroll(this.$refs.wrapper, {
-        tap: true,
-        probeType: 1
-      });
-      //  上拉刷新
-      scroll.on("scroll", () => {
-        this.msg = "正在更新";
-        this.flag = true;
-        // setTimeout(() => {
-        //   this.flag = true;
-        // }, 1000);
-      });
-      scroll.on("scrollEnd", () => {
-        // console.log("end");
-        this.msg = "更新完成";
-        // this.flag = false;
-        setTimeout(() => {
-          this.flag = false;
-        }, 1000);
-      });
-    });
+    // this.$nextTick(() => {
+    //   var scroll = new BScroll(this.$refs.wrapper, {
+    //     tap: true,
+    //     probeType: 1
+    //   });
+    //   //  上拉刷新
+    //   scroll.on("scroll", () => {
+    //     this.msg = "正在更新";
+    //     this.flag = true;
+    //     // setTimeout(() => {
+    //     //   this.flag = true;
+    //     // }, 1000);
+    //   });
+    //   scroll.on("scrollEnd", () => {
+    //     // console.log("end");
+    //     this.msg = "更新完成";
+    //     // this.flag = false;
+    //     setTimeout(() => {
+    //       this.flag = false;
+    //     }, 1000);
+    //   });
+    // });
   },
   // 私有过滤器
   filters: {
