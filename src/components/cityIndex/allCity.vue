@@ -1,6 +1,7 @@
 <template>
   <div class="info">
-    <ul>
+    <loading v-if="isLoading"></loading>
+    <ul v-else>
       <li v-for="item in allCity" :key="item.id">
         <h2>
           {{ item.nm }}
@@ -30,17 +31,24 @@
 export default {
   data() {
     return {
-      allCity: [] // 存放城市数据
+      allCity: [], // 存放城市数据
+      isLoading: true,
+      cityId: -1 // 优化ID
     };
   },
-  mounted() {
+  activated() {
     // console.log('ok')
-    this.axios.get("/api/cinemaList?cityId=10").then(res => {
+    let cityId = this.$store.state.city.id;
+    if (this.cityId === cityId) return;
+    this.isLoading = true;
+    this.axios.get("/api/cinemaList?cityId=" + cityId).then(res => {
       // console.log(res)
       // 判断数据是否请求成功
       if (res.status === 200) {
         // 将数据赋值到存放的数据数组中
         this.allCity = res.data.data.cinemas;
+        this.cityId = cityId;
+        this.isLoading = false;
       }
     });
   },
@@ -62,8 +70,8 @@ export default {
         // break;
       }
     },
-    colorFormat(key){
-        switch (key) {
+    colorFormat(key) {
+      switch (key) {
         case "allowRefund":
           return "green";
         // break;

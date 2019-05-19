@@ -40,7 +40,8 @@ export default {
       movieList: [],
       flag: false,
       msg: "正在刷新",
-      isLoading:true   // 加载动画默认值为true
+      isLoading: true, // 加载动画默认值为true
+      cityId: -1 // 为了解决性能优化
     };
   },
   methods: {
@@ -63,13 +64,21 @@ export default {
     }
   },
   // 页面加载获取数据
-  mounted() {
-    this.axios.get("/api/movieOnInfoList?cityId=10").then(res => {
+  // 由于使用了 keep-alive
+  activated() {
+    // console.log("ok");
+    // 获取城市id
+    let cityId = this.$store.state.city.id;
+    // 需求就是没有更改城市的时候，不会重新发起请求
+    if (this.cityId === cityId) return;
+    this.isLoading = true;
+    this.axios.get("/api/movieOnInfoList?cityId=" + cityId).then(res => {
       // console.log(res.status)
       // 作出判断数据是否获取成功
       if (res.status === 200) {
         this.movieList = res.data.data.movieList;
         this.isLoading = false;
+        this.cityId = cityId;
       }
     });
     // this.$nextTick(() => {

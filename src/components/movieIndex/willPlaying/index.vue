@@ -1,7 +1,7 @@
 <template>
   <div id="willPlaying">
     <loading v-if="isLoading"></loading>
-    <scroller v-else> 
+    <scroller v-else>
       <ul>
         <li class="box" v-for="item in comingList" :key="item.id">
           <div class="img">
@@ -34,17 +34,24 @@ export default {
   data() {
     return {
       comingList: [],
-      isLoading:true
+      isLoading: true,
+      cityId: -1 // 优化数据请求
     };
   },
-  mounted() {
+  activated() {
+    // console.log('ok')
+    let cityId = this.$store.state.city.id;
+    this.isLoading = false;
+    // 判断ID是否和当前的id一致
+    if (this.cityId === cityId) return;
     // 获取数据
-    this.axios.get("/api/movieComingList?cityId=10").then(res => {
-      // console.log(res)
+    this.axios.get("/api/movieComingList?cityId=" + cityId).then(res => {
       if (res.status === 200) {
         this.comingList = res.data.data.comingList;
-        // 将loading取消 
+        // 将loading取消
         this.isLoading = false;
+        // 将当前id 复制给 优化id
+        this.cityId = cityId;
       }
     });
   }
