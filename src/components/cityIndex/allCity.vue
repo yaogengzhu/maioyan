@@ -52,6 +52,7 @@ export default {
       }
     });
   },
+  
   // 过滤器处理tag
   filters: {
     tagFormat(key) {

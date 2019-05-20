@@ -41,9 +41,9 @@ export default {
   activated() {
     // console.log('ok')
     let cityId = this.$store.state.city.id;
-    this.isLoading = false;
     // 判断ID是否和当前的id一致
     if (this.cityId === cityId) return;
+    this.isLoading = true;
     // 获取数据
     this.axios.get("/api/movieComingList?cityId=" + cityId).then(res => {
       if (res.status === 200) {

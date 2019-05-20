@@ -27,11 +27,46 @@
 // 导入组件
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { messageBox } from "@/components/js";
 export default {
   name: "movie",
   components: {
     Header,
     Footer
+  },
+  mounted() {
+    // 调用城市定位的location
+    this.axios.get("/api/getLocation").then(res => {
+      // console.log(res)
+      // 判断是否调用成功
+      if (res.status === 200) {
+        // console.log(res.data.data.nm);
+        // 做出一个判断，当前城市与选择城市一致的时候。不用弹窗
+        if (this.$store.state.city.id == res.data.data.id) return;
+        // 调用messageBox()函数
+        // 为了提高体验度，加一个定时器
+        setTimeout(() => {
+          messageBox({
+            title: "定位",
+            content: res.data.data.nm,
+            cancel: "取消",
+            ok: "切换定位",
+            // 取消事件暂时不用处理
+            // handleCancel() {
+            //   console.log(1);
+            // },
+            handleOk() {
+              // console.log(2);
+              // 将获取到的数据本地存储
+              window.localStorage.setItem("city_nm", res.data.data.nm);
+              window.localStorage.setItem("city_id", res.data.data.id);
+              // 刷新本页
+              window.location.reload();
+            }
+          });
+        }, 1000);
+      }
+    });
   }
 };
 </script>
