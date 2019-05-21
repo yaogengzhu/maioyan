@@ -70,7 +70,6 @@ export default {
   }
 };
 </script>
-
 <style lang="scss" scoped>
 #movie {
   // position: relative;
