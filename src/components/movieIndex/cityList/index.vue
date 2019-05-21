@@ -192,7 +192,7 @@ export default {
   flex: 1;
   width: 100%;
   overflow: auto;
-  background: #fff5f0;
+  background: #fff;
 }
 .city_body .city_list::-webkit-scrollbar {
   background-color: transparent;
