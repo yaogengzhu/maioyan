@@ -5,11 +5,11 @@
     <scroller :changeScroll="changeScroll" :changeTouchEnd="changeTouch" v-else>
       <ul>
         <li v-if="flag" style="text-align:center">{{ msg }}</li>
-        <li class="box" v-for="item in movieList" :key="item.id" @tap="change">
-          <div class="img">
+        <li class="box" v-for="item in movieList" :key="item.id">
+          <div class="img" @tap="handleToDetil(item.id)">
             <img :src="item.img | imgFormat('128.180')" alt>
           </div>
-          <div class="info">
+          <div class="info" @tap="handleToDetil(item.id)">
             <h2>
               {{ item.nm }}
               <img src="@/assets/max.png" v-if="item.version" alt>
@@ -45,8 +45,11 @@ export default {
     };
   },
   methods: {
-    change() {
-      // console.log("ok");
+    // 点击触发进入详情页
+    handleToDetil(id) {
+      // console.log(id);
+      // 将id传入下一个组件中
+      this.$router.push("/movie/detail/" + id);
     },
     changeScroll() {
       // console.log();

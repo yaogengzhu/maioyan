@@ -32,6 +32,7 @@ export default {
   left: 0;
   border-top: 1px solid #ddd;
   background-color: #fff;
+  z-index: 10;
   // background-color: pink;
   ul {
     width: 100%;

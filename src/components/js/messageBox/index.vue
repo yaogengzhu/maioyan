@@ -27,6 +27,7 @@ export default {
   border: 1px solid #ccc;
   background-color: #fff;
   box-shadow: 2px 3px 10px 2px #ccc;
+  z-index: 222;
   h2 {
     text-align: center;
     line-height: 30px;

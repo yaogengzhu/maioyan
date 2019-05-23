@@ -108,3 +108,47 @@ export default {
 }
 ```
 - 对于子路由的优化，我们做到来按需加载的形式。如果我们使用以前的方式。这个页面不需要组件的文件也会被加载进来，但是使用`() => import('组件的地址')`。优化之后，对页面也会有一定的提升。
+
+
+#### 对于路由组件传递参数
+
+```js
+ {
+  path: 'detail/:movieId',
+    components: {
+    detail: () => import('@/views/movie/detail.vue'),
+    }
+ }
+```
+对于上面这种写法， 我们可以在传递过去的组件中，直接使用`this.$route.params.movieId`接受参数。通过查阅资料，有一定的缺陷。
+在组件中使用 $route 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 URL 上使用，限制了其灵活性。
+故我们可以采取`props`将路由组件解偶。
+```js
+{
+  path: 'detail/:movieId',
+    components: {
+      detail: () => import('@/views/movie/detail.vue'),
+    },
+    props: {
+      detail: true
+    }
+}
+```
+组件接收方式
+```js
+export default {
+  name: "detail",
+  props: ['movieId'],
+  components: {
+    Header
+  },
+  mounted() {
+    // 这种方式也可以传递id过来，在组件中使用 $route 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 URL 上使用，限制了其灵活性。
+    // console.log(this.$route.params.movieId)
+    console.log(this.movieId)
+  },
+}
+```
+这样你便可以在任何地方使用该组件，使得该组件更易于重用和测试。
+
+[参考官方文档](https://router.vuejs.org/zh/guide/essentials/passing-props.html)

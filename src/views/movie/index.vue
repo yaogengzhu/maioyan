@@ -19,6 +19,7 @@
         <router-view></router-view>
       </keep-alive>
     </div>
+    <router-view name="detail"/>
     <Footer/>
   </div>
 </template>
@@ -80,6 +81,8 @@ export default {
     display: flex;
     flex: 1;
     height: 100%;
+    position: relative;
+    z-index: 1;
     .nav-list {
       overflow: hidden;
       position: fixed;

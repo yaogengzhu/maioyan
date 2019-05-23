@@ -1,6 +1,6 @@
 <template>
     <div id="headerPage">
-       <h1>{{ title }}</h1>
+       <slot></slot> <h1>{{ title }}</h1>
     </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
         height: 40px;
         width: 100%;
         background-color: deeppink;
-        z-index: 999;
+        z-index: 10;
         text-align: center;
         line-height: 40px;
         font-size: 18px;
