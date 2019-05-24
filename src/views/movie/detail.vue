@@ -4,30 +4,43 @@
       <i class="back" @touchstart="handleTOBack"></i>
     </Header>
     <div class="content">
+      <!-- 影片介绍 -->
       <div class="content-detail">
         <div
           class="content-bg"
-          style="background:url(http://p0.meituan.net/148.208/movie/f29c0f9ff0340d00085f4bc1a395ecf02603950.jpg)"
+          :style="{ 'background-image' : 'url('+ movieList.img.replace(/w\.h/,'148.208') +')' }"
         ></div>
         <div class="content-filter"></div>
         <div class="content-info">
           <div class="detail-list-img">
-            <img
-              src="http://p0.meituan.net/148.208/movie/f29c0f9ff0340d00085f4bc1a395ecf02603950.jpg"
-            >
+            <img :src="movieList.img.replace(/w\.h/,'108.150')">
           </div>
           <div class="detail-list-info">
-            <h2>大侦探皮卡丘</h2>
-            <p>POKÉMON Detective Pikachu</p>
-            <p>8.5</p>
+            <h2>{{ movieList.nm }}</h2>
+            <p>{{ movieList.enm }}</p>
+            <p>{{ movieList.sc }}</p>
             <p>{{ movieList.cat }}</p>
             <p>{{ movieList.fra }} / {{ movieList.dur }}分钟</p>
-            <p>2019-05-10大陆上映</p>
+            <p>{{ movieList.pubDesc }}</p>
           </div>
         </div>
       </div>
+      <!-- 介绍 -->
       <div class="introduce">
         <p>{{ movieList.dra }}</p>
+      </div>
+      <!-- 图片展示 -->
+      <div class="swiper-container" ref="detail_player">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide" v-for="(list,index) in movieList.photos" :key="index">
+              <img
+                :src="list | imgFormat('140.127')"
+              >
+          </li>
+       
+     
+        
+        </ul>
       </div>
     </div>
   </div>
@@ -35,12 +48,13 @@
 
 <script>
 import Header from "@/components/header";
+import BScroll from "better-scroll";
 export default {
   name: "detail",
-  data(){
+  data() {
     return {
       movieList: {}
-    }
+    };
   },
   props: ["movieId"],
   components: {
@@ -57,6 +71,12 @@ export default {
         // console.log(res.data.data.detailMovie);
         if (res.status === 200) {
           this.movieList = res.data.data.detailMovie;
+          this.$nextTick(() => {
+            new BScroll(this.$refs.detail_player, {
+              scrollX: true,
+              probeType: 1
+            });
+          });
         }
       });
   },
@@ -161,13 +181,35 @@ export default {
         }
       }
     }
-  }
-  .introduce {
-    margin: 10px;
-    p {
-      font-size: 18px;
-      //   margin-top:5px;
-      line-height: 20px;
+    .introduce {
+      margin: 10px;
+      p {
+        font-size: 18px;
+        //   margin-top:5px;
+        line-height: 20px;
+      }
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      .swiper-wrapper {
+        // width: 100%;
+        width: 1768px;
+        display: flex;
+        flex: 1;
+      }
+      li {
+        width: 140px;
+        height: 127px;
+        margin: 0 20px;
+        flex-shrink: 0;
+        box-shadow: 3px 3px 10px 3px #ddd;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 }
