@@ -88,16 +88,17 @@
 
 #### 本项目一共八个静态页面，没有做其他扩展～涵盖了聚多的知识点知识！
 
-<figure class="four">
+<figure class="third">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p1.png?raw=true" width=200 height=400 alt="图1">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p2.png?raw=true" width=200 height=400 alt="图2">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p3.png?raw=true" width=200 height=400 alt="图3">
+</figure>
+<figure class="third">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p4.png?raw=true" width=200 height=400 alt="图4">
-</figure >
-
-<figure class="four">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p5.png?raw=true" width=200 height=400 alt="图5">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p6.png?raw=true" width=200 height=400 alt="图6">
+</figure>
+<figure class="two">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p7.png?raw=true" width=200 height=400 alt="图7">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p8.png?raw=true" width=200 height=400 alt="图8">
 </figure >
