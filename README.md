@@ -88,19 +88,19 @@
 
 #### 本项目一共八个静态页面，没有做其他扩展～涵盖了聚多的知识点知识！
 
-<center class="four">
+<figure class="four">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p1.png?raw=true" width=200 height=400 alt="图1">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p2.png?raw=true" width=200 height=400 alt="图2">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p3.png?raw=true" width=200 height=400 alt="图3">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p4.png?raw=true" width=200 height=400 alt="图4">
-</center >
+</figure >
 
-<center class="four">
+<figure class="four">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p5.png?raw=true" width=200 height=400 alt="图5">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p6.png?raw=true" width=200 height=400 alt="图6">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p7.png?raw=true" width=200 height=400 alt="图7">
 <img src="https://github.com/yaogengzhu/maioyan/blob/master/showImage/p8.png?raw=true" width=200 height=400 alt="图8">
-</center >
+</figure >
 
 ## 部分技术要点分析
 1.使用`vue.config.js`中配置`proxy`反向数据代理 [具体可以参考](https://cli.vuejs.org/zh/config/#devserver-proxy)，看代码分析 
