@@ -7,16 +7,32 @@
 │   ├── css
 │   │   └── reset.css
 │   ├── favicon.ico
+│   ├── font
+│   │   ├── iconfont.eot
+│   │   ├── iconfont.svg
+│   │   ├── iconfont.ttf
+│   │   ├── iconfont.woff
+│   │   └── iconfont.woff2
 │   └── index.html
 ├── src
 │   ├── App.vue
 │   ├── assets
+│   │   ├── CityHall.png
+│   │   ├── lazy1.jpg
+│   │   ├── max.png
 │   │   ├── message.png
+│   │   ├── movie.jpg
 │   │   ├── movie.png
 │   │   └── personal.png
 │   ├── components
+│   │   ├── cityIndex
 │   │   ├── footer
-│   │   └── header
+│   │   ├── header
+│   │   ├── js
+│   │   ├── loading
+│   │   ├── movieIndex
+│   │   ├── personIndex
+│   │   └── scroller
 │   ├── main.js
 │   ├── routers
 │   │   ├── city
@@ -24,11 +40,13 @@
 │   │   ├── movie
 │   │   └── person
 │   ├── stores
+│   │   ├── city
 │   │   └── index.js
 │   └── views
 │       ├── city
 │       ├── movie
 │       └── person
-└── tree.md
+├── tree.md
+└── vue.config.js
 
-16 directories, 15 files
+24 directories, 25 files

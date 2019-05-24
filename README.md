@@ -1,4 +1,5 @@
-# 喵眼
+# 喵眼电影项目（基于vue开发）
+该项目采用的是vue开发，ui没有使用任何框架。完全手写～
 
 ## 使用指导
 - `git pull  项目地址` 到本地
@@ -7,36 +8,56 @@
 
 ## 文件目录树
 ```md
-├── README.md 
+.
+├── README.md
 ├── babel.config.js
 ├── package-lock.json
 ├── package.json
-├── public
+├── public (存放公共文件)
 │   ├── css
 │   │   └── reset.css
 │   ├── favicon.ico
+│   ├── font (字体图表文件)
+│   │   ├── iconfont.eot
+│   │   ├── iconfont.svg
+│   │   ├── iconfont.ttf
+│   │   ├── iconfont.woff
+│   │   └── iconfont.woff2
 │   └── index.html
-├── src 
+├── src
 │   ├── App.vue
-│   ├── assets （存放一些图片，字体图标）
+│   ├── assets (存放一些图片等)
+│   │   ├── CityHall.png
+│   │   ├── lazy1.jpg
+│   │   ├── max.png
 │   │   ├── message.png
+│   │   ├── movie.jpg
 │   │   ├── movie.png
 │   │   └── personal.png
-│   ├── components （子组件）
+│   ├── components(子组件)
+│   │   ├── cityIndex
 │   │   ├── footer
-│   │   └── header
-│   ├── main.js （核心部分，配置中心）
-│   ├── routers （路由文件）
+│   │   ├── header
+│   │   ├── js
+│   │   ├── loading
+│   │   ├── movieIndex
+│   │   ├── personIndex
+│   │   └── scroller
+│   ├── main.js（入口文件）
+│   ├── routers (路由文件)
 │   │   ├── city
 │   │   ├── index.js
 │   │   ├── movie
 │   │   └── person
-│   ├── stores (vuex 数据文件)
-    │   └── index.js
-    └── views （视图层文件）
-        ├── city
-        ├── movie
-        └── person
+│   ├── stores (状态管理文件)
+│   │   ├── city
+│   │   └── index.js
+│   └── views （主要示图文件）
+│       ├── city
+│       ├── movie
+│       └── person
+├── tree.md
+└── vue.config.js
 ```
 
 ## 如何初始化整个项目 
@@ -44,7 +65,22 @@
 - 使用命令 `vue create miaoyan` 
 - 没有使用默认配置，是手动配置的。配置的`vue-router`,`vuex`,`node-sass`,`eslint`..
 
+## 项目接口文件 
+  |接口名称|请求方式|请求示列|
+  |---|----|----|---|
+  |正在热映|get|http://39.97.33.178/api/movieOnInfoList?cityId=10|
+  |即将上映|get|http://39.97.33.178/api/movieComingList?cityId=10|
+  |搜索|get|http://39.97.33.178/api/searchList?cityId=10&kw=a|
+  |城市|get|http://39.97.33.178/api/cityList|
+  |电影详情|get|http://39.97.33.178/api/detailmovie?movieId=345808|
+  |影院|get|http://39.97.33.178/api/cinemaList?cityId=10|
+  |城市定位|get|http://39.97.33.178/api/getLocation|
+
 ## 技术要点
+- [x] `vue`
+- [x] `vuex`
+- [x] `vue-router`
+- [x] `better-scroll`
 - [x] `proxy`
 - [x] `axios`
 
