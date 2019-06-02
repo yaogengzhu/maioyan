@@ -1,5 +1,6 @@
 .DS_Store
 # 去掉包的依赖
+package-lock.json
 node_modules
 /dist
 
